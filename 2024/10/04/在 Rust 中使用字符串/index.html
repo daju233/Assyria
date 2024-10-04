@@ -1,0 +1,113 @@
+<!DOCTYPE html><html lang="cn" theme-mode="dark"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>在 Rust 中使用字符串 | Assyria</title><link rel="icon" type="image/x-icon" href="/icon.ico"><link rel="preload" as="font" crossorigin="anonymous" href="/font/Bender.ttf"><link rel="preload" as="font" crossorigin="anonymous" href="/font/BenderLight.ttf"><link rel="preload" as="font" crossorigin="anonymous" href="/font/JetBrainsMono-Regular.woff2"><link rel="stylesheet" href="/css/arknights.css"><style>@font-face {
+  font-family: Bender;
+  src: local('Bender'), url("/font/Bender.ttf"), url("/font/Bender.otf");
+}
+@font-face {
+  font-family: BenderLight;
+  src: local('BenderLight'), url("/font/BenderLight.ttf");
+}
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: local('JetBrains Mono'), url('/font/JetBrainsMono-Regular.woff2') format('woff2');
+}
+</style><script>var config = {"root":"/","search":{"preload":false,"activeHolder":"Enter here","blurHolder":"Search","noResult":"Data \"$0\" not found"},"code":{"codeInfo":"$0 - $1 lines","copy":"copy"}}</script><link type="text/css" rel="stylesheet" href="/lib/encrypt/hbe.style.css"><script src="/js/gitalk.js"></script><script src="//unpkg.com/mermaid@10.5.0/dist/mermaid.min.js"></script><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lightgallery.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-zoom.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-thumbnail.css"><link type="text/css" rel="stylesheet" href="/lib/fontawesome/css/all.min.css"><script>if (window.localStorage.getItem('theme-mode') === 'light')
+ document.documentElement.setAttribute('theme-mode', 'light')
+if (window.localStorage.getItem('theme-mode') === 'dark')
+ document.documentElement.setAttribute('theme-mode', 'dark')</script><style>@font-face {
+ font-family: BenderLight;
+ src: local('Bender'), url("/font/BenderLight.woff2") format('woff2');
+}
+@font-face {
+ font-family: 'JetBrains Mono';
+ src: local('JetBrains Mono'), url('/font/JetBrainsMono-Regular.woff2') format('woff2');
+}</style><style>:root {
+ --dark-background: url('https://ak.hypergryph.com/assets/index/images/ak/pc/bk.jpg');
+ --light-background: url('/img/bk.jpg');
+ --theme-encrypt-confirm: 'confirm'
+}</style><script defer src="/js/arknights.js"></script><script defer src="/js/search.js"></script><script async src="/js/gitalk.js"></script><script defer type="module">import mermaid from '//unpkg.com/mermaid@10.5.0/dist/mermaid.esm.mjs';
+window.mermaid = mermaid;
+code.paintMermaid();
+</script><script async src="//unpkg.com/lightgallery@2.7.1/lightgallery.min.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/plugins/zoom/lg-zoom.min.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/plugins/thumbnail/lg-thumbnail.min.js"></script><script async src="/lib/encrypt/hbe.js"></script><script async src="/js/pjax.js"></script><script class="pjax-js">reset= () => {gitalk = new Gitalk({
+ clientID: 'Ov23lizDAB0ENERHJpHs',
+ clientSecret: '2d06ab5b26d26b201856723845f91408188fdcb8',
+ repo: 'Assyria',
+ owner: 'daju233',
+ admin: ['daju233'],
+ distractionFreeMode: false,
+ id: location.pathname.slice(0,40)
+});
+if (document.querySelector("#gitalk")) gitalk.render("gitalk");document.querySelector('.lg-container')?.remove()
+lightGallery(document.getElementById('post-bg'), {
+  plugins: [lgZoom,lgThumbnail],
+  selector: '.item-img'})}</script><script>window.addEventListener("load",() => {pjax = new Pjax({
+ cacheBust: false,
+ selectors: ['title','article','#aside-block','.pjax-js','data-pjax','.busuanzi'],
+ switches: {'article': Pjax.switches.sideBySide},
+ switchesOptions: {
+   'article': {
+     classNames: {
+       remove: "pjax-out",
+       add: "pjax-in"
+     }
+   }
+ }
+});
+document.addEventListener("pjax:complete", reset);reset()})</script><script class="pjax-js">reset= () => {gitalk = new Gitalk({
+ clientID: 'Ov23lizDAB0ENERHJpHs',
+ clientSecret: '2d06ab5b26d26b201856723845f91408188fdcb8',
+ repo: 'Assyria',
+ owner: 'daju233',
+ admin: ['daju233'],
+ distractionFreeMode: false,
+ id: location.pathname.slice(0,40)
+});
+if (document.querySelector("#gitalk")) gitalk.render("gitalk");document.querySelector('.lg-container')?.remove()
+lightGallery(document.getElementById('post-bg'), {
+  plugins: [lgZoom,lgThumbnail],
+  selector: '.item-img'})}</script><script>window.addEventListener("load",() => {pjax = new Pjax({
+ cacheBust: false,
+ selectors: ['title','article','#aside-block','.pjax-js'],
+ switches: {'article': Pjax.switches.sideBySide},
+ switchesOptions: {
+   'article': {
+     classNames: {
+       remove: "pjax-out",
+       add: "pjax-in"
+     }
+   }
+ }
+});
+document.addEventListener("pjax:complete", reset);reset()})</script><meta name="generator" content="Hexo 7.3.0"></head><body><div class="loading" style="opacity: 0;"><div class="loadingBar left"></div><div class="loadingBar right"></div></div><main><header class="closed"><div class="navBtn"><i class="navBtnIcon"><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span></i></div><nav><div class="navItem" id="search-header"><span class="navItemTitle"><input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="Search" spellcheck="false" maxlength="50" type="text" id="search-input"></span></div><div class="navItem" id="search-holder"></div><div class="search-popup" tabindex="0"><div id="search-result"></div></div><ol class="navContent"><li class="navItem"><a class="navBlock" href="/"><span class="navItemTitle">Home</span></a></li><li class="navItem"><a class="navBlock" href="/about"><span class="navItemTitle">About</span></a></li><li class="navItem"><a class="navBlock" href="/todo-list"><span class="navItemTitle">Todo-list</span></a></li><li class="navItem" matchdata="categories,tags"><a class="navBlock" href="/archives/"><span class="navItemTitle">Archives</span></a></li></ol></nav></header><article><div id="post-bg"><div id="post-title"><h1>在 Rust 中使用字符串</h1><div id="post-info"><span>First Post: <div class="control"><time datetime="2024-10-04T10:33:45.000Z" id="date"> 2024-10-04</time></div></span><br><span>Last Update: <div class="control"><time datetime="2024-10-04T11:21:56.854Z" id="updated"> 2024-10-04</time></div></span></div></div><hr><div id="post-content"><p>机翻摘抄自 <a target="_blank" rel="noopener" href="https://fasterthanli.me/articles/working-with-strings-in-rust">Working with strings in Rust</a></p>
+<h1 id="从C开始"><a href="#从C开始" class="headerlink" title="从C开始"></a>从C开始</h1><hr>
+<p>当人们学习<a target="_blank" rel="noopener" href="https://www.rust-lang.org/">Rust</a>编程语言时，总会出现一个问题：为什么有两种字符串类型？为什么有<code>String</code>和<code>&amp;str</code> ？</p>
+<p>作者先从一个C语言程序入手：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">_// in `print.c`_<br><br>_int_ _main_(_int_ _argc_, _char_ _*__*__argv_) &#123;<br>    _printf_(_&quot;argv = %p\n&quot;_, _argv_); _// new!_<br>    _for_ (_int_ _i_ _=_ _0_; _i_ _&lt;_ _argc_; _i__++_) &#123;<br>        _char_ _*__arg_ _=_ _argv_[_i_];<br>        _printf_(_&quot;argv[%d] = %p\n&quot;_, _i_, _argv_[_i_]); _// new!_<br>        _printf_(_&quot;%s\n&quot;_, _arg_);<br>    &#125;<br><br>    _return_ _0_;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>看看结果，看起来不错！</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">$ gcc print.c -o print<br>$ ./print &quot;ready&quot; &quot;set&quot; &quot;go&quot;<br>./print<br>ready<br>set<br>go<br></code></pre></td></tr></table></figure>
+
+<p>现在看看我们到底在做什么</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">_// in `print.c`_<br><br>_int_ _main_(_int_ _argc_, _char_ _*__*__argv_) &#123;<br>    _printf_(_&quot;argv = %p\n&quot;_, _argv_); _// new!_<br>    _for_ (_int_ _i_ _=_ _0_; _i_ _&lt;_ _argc_; _i__++_) &#123;<br>        _char_ _*__arg_ _=_ _argv_[_i_];<br>        _printf_(_&quot;argv[%d] = %p\n&quot;_, _i_, _argv_[_i_]); _// new!_<br>        _printf_(_&quot;%s\n&quot;_, _arg_);<br>    &#125;<br><br>    _return_ _0_;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>Now we’re using the <code>%p</code> format specifier, which prints.. pointers!<br>现在我们使用<code>%p</code>格式说明符，它打印..指针！</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">$ gcc print.c -o print<br>$ ./print &quot;ready&quot; &quot;set&quot; &quot;go&quot;<br>argv = 0x7ffcc35d84a8<br>argv[0] = 0x7ffcc35d9039<br>./print<br>argv[1] = 0x7ffcc35d9041<br>ready<br>argv[2] = 0x7ffcc35d9047<br>set<br>argv[3] = 0x7ffcc35d904b<br>go<br></code></pre></td></tr></table></figure>
+
+<p>于是我们知道，argv是一个地址数组<br class='item-img' data-src='https://raw.githubusercontent.com/daju233/myPic/master/202410041906546.png'><img src="https://raw.githubusercontent.com/daju233/myPic/master/202410041906546.png" alt="image.png"><br>那么<code>%s</code>如何知道自己何时停止打印？<br>作者的代码copy过来不太方便，于是直接上图</p>
+<p class='item-img' data-src='https://raw.githubusercontent.com/daju233/myPic/master/202410041907366.png'><img src="https://raw.githubusercontent.com/daju233/myPic/master/202410041907366.png" alt="image.png"></p>
+<p>让我们尝试将我们的程序通过管道传输到像<code>xxd</code>这样的十六进制转储器中，以准确查看发生了什么：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">$ # note: &quot;-g 1&quot; means &quot;show groups of one byte&quot;,<br>$ # xxd defaults to &quot;-g 2&quot;.<br>$ ./print &quot;ready&quot; &quot;set&quot; &quot;go&quot; | xxd -g 1<br>00000000: 2e 2f 70 72 69 6e 74 00 72 65 61 64 79 00 73 0a  ./print.ready.s.<br>00000010: 72 65 61 64 79 00 73 65 74 00 67 6f 00 43 44 0a  ready.set.go.CD.<br>00000020: 73 65 74 00 67 6f 00 43 44 50 41 54 48 3d 2e 0a  set.go.CDPATH=..<br>00000030: 67 6f 00 43 44 50 41 54 48 3d 2e 3a 2f 68 6f 0a  go.CDPATH=.:/ho.<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">00000000: 2e 2f 70 72 69 6e 74 00 72 65 61 64 79 00 73 0a  ./print.ready.s.<br>          .  /  p  r  i  n  t  ^^ r  e  a  d  y  ^^<br></code></pre></td></tr></table></figure>
+<p>我们发现他用00分割了每个参数，事实上，C具有以null(0)结尾的字符串。<br>所以<code>%s</code>等价于一个在0上break的<code>%c</code>打印程序。</p>
+<p>&#x3D;&#x3D;You may have noticed that when our print program went <em>beyond</em> the end of our arguments, it showed <code>CDPATH=.:/ho</code> too.<br>That was (part of) an environment variable! Those are stored right next to the program’s arguments in glibc, the GNU C library.<br>But the specifics are out of scope for this article, you may want to check out the <a target="_blank" rel="noopener" href="https://fasterthanli.me/blog/2020/whats-in-a-linux-executable/">Making our own executable packer</a> series instead.<br>您可能已经注意到，当我们的打印程序_超出_参数末尾时，它也显示<code>CDPATH=.:/ho</code> 。<br>那是环境变量（的一部分）！它们存储在 GNU C 库 glibc 中程序参数的旁边。<br>但具体细节超出了本文的范围，您可能想查看“<a target="_blank" rel="noopener" href="https://fasterthanli.me/blog/2020/whats-in-a-linux-executable/">制作我们自己的可执行加壳器”</a>系列 &#x3D;&#x3D;</p>
+<p>现在进行最后一个测试</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">$ gcc print.c -o print<br>$ ./print &quot;élément&quot;<br>éLéMENT<br></code></pre></td></tr></table></figure>
+<p>好像出现了一点问题，实际我们想要的是“ÉLÉMENT”，好吧，让我们试试更简单的事情——打印每个字符<code>%c</code>并用空格隔开。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">_// in `print.c`_<br><br>_#include_ _&lt;stdio.h&gt;_ _// printf_<br><br>_int_ _main_(_int_ _argc_, _char_ _*__*__argv_) &#123;<br>    _for_ (_int_ _i_ _=_ _1_; _i_ _&lt;_ _argc_; _i__++_) &#123;<br>        _char_ _*__arg_ _=_ _argv_[_i_];<br>        _for_ (_int_ _j_ _=_ _0_;; _j__++_) &#123;<br>            _char_ _character_ _=_ _arg_[_j_];<br>            _if_ (_character_ _==_ _0_) &#123;<br>                _break_;<br>            &#125;<br>            _// notice the space following `%c`_<br>            _printf_(_&quot;%c &quot;_, _character_);<br>        &#125;<br>        _printf_(_&quot;\n&quot;_);<br>    &#125;<br><br>    _return_ _0_;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">$ gcc print.c -o print<br>$ ./print &quot;élément&quot;<br>  l   m e n t<br></code></pre></td></tr></table></figure>
+<p>不太行……还是再看看xxd好吗？</p>
+<figure class="highlight plaintext"><figcaption><span>gcc print.c -o print</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs $">$ ./print &quot;élément&quot; | xxd -g 1<br>00000000: c3 a9 6c c3 a9 6d 65 6e 74 0a                    ..l..ment.<br>          ^^^^^    ^^^^^<br></code></pre></td></tr></table></figure>
+<p>问题就在于，É实际上是两个byte<code>c3 a9</code>，即使我们使用nodejs书写一样如此，为什么他的编码是c3 a9？是时候学习一下utf-8了。</p>
+<h1 id="快速UTF-8入门"><a href="#快速UTF-8入门" class="headerlink" title="快速UTF-8入门"></a>快速UTF-8入门</h1><div id="paginator"></div></div><div id="post-footer"><div id="pages"><div class="footer-link" style="width: 50%;text-align:right;border-right:1px #fe2 solid"><a href="/2024/10/04/fetch%E3%80%81promise%E5%92%8C%E6%B5%8F%E8%A7%88%E5%99%A8%E7%BA%BF%E7%A8%8B/">← Next fetch、promise和浏览器线程</a></div><div class="footer-link" style="width: 50%;right:1px;border-left:1px #fe2 solid"><a href="/2024/10/02/%E5%85%B3%E4%BA%8E%E5%B9%B6%E8%A1%8C%E8%AE%A1%E7%AE%97%E7%9A%84%E8%B7%AF%E7%BA%BF/">关于并行计算的路线 Prev →</a></div></div></div><div id="comments"><div id="gitalk"></div></div></div><div class="bottom-btn"><div><a class="i-top" id="to-top" onClick="scrolls.scrolltop();" title="To Top" style="opacity: 0; display: none;">∧ </a><a class="i-color" id="color-mode" onClick="colorMode.change()" title="Change Theme"></a></div></div></article><aside><div id="about"><a href="/" id="logo"><img src="https://ak.hypergryph.com/assets/index/images/ak/pc/faction/1.png" alt="Logo"></a><h1 id="Dr"><a href="/">Lorange</a></h1><div id="description"><p>Memory Database</p></div><div id="social-links"><a class="social" target="_blank" rel="noopener" href="https://github.com/daju233"><i class="fab fa-github" alt="GitHub"></i></a><a class="social" href="daju8264445@gmail.com"><i class="fa fa-envelope" alt="E-Mail"></i></a></div></div><div id="aside-block"></div><footer><nobr><span class="icp-title">copyright</span><span class="icp-content">©2022-2024 主治医师李大华</span></nobr><br><nobr><span class="icp-title">CC BY-NC-SA 4.0</span><span class="icp-content">https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh</span></nobr><br><nobr>Published with <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a></nobr><wbr><nobr> Theme <a target="_blank" rel="noopener" href="https://github.com/Yue-plus/hexo-theme-arknights">Arknights</a></nobr><wbr><nobr> by <a target="_blank" rel="noopener" href="https://github.com/Yue-plus">Yue_plus</a></nobr></footer></aside></main><canvas id="canvas-dust"></canvas></body></html>
